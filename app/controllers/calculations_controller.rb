@@ -13,5 +13,9 @@ class CalculationsController < ApplicationController
   end
 
   def pmt
+    r = params[:interest_rate].to_f/100
+    n = params[:number_of_payments].to_f
+    p = params[:present_value].to_f
+    @payment = (p * r * (1 + r) ** n) / ((1 + r) ** n - 1)
   end
 end
